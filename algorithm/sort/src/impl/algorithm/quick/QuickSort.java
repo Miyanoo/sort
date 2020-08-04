@@ -36,8 +36,8 @@ public class QuickSort implements BaseArraySort {
         }
 
         int partition = partition(sourceArray, left, right);            // 调用 partition() 方法返回分割点
-        quickSort(sourceArray, left, partition - 1);                        // 对分割点左侧进行排序
-        quickSort(sourceArray, partition + 1, right);                        // 对分割点右侧进行排序
+        quickSort(sourceArray, left, partition);               // 对分割点左侧进行排序
+        quickSort(sourceArray, partition + 1, right);                // 对分割点右侧进行排序
     }
 
     /**
@@ -72,7 +72,9 @@ public class QuickSort implements BaseArraySort {
         }
 
         /* 由于此处选择的分割数处于最左侧, 因此我们需要先从右侧开始扫描, 因此当扫描到最后指针相遇时, 相遇处的数比分割点小*/
-        Utils.swap(sourceArray, targetIndex, left);                     // 因此最终我们需要交换分割点与相遇处的数
+        if (target > sourceArray[left]) {
+            Utils.swap(sourceArray, targetIndex, left);                 // 因此最终我们需要交换分割点与相遇处的数
+        }
         return left;
     }
 }

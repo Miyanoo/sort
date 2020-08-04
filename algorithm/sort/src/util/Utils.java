@@ -49,6 +49,5 @@ public class Utils {
         for (int i = 0; i < len / 2; i++) {
             swap(sourceArray, i, len - i - 1);
         }
-
     }
 }
